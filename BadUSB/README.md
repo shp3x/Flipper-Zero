@@ -13,3 +13,7 @@
  _L_  _     ___  ___  ___  ___  ____--"`___  
  
  ```
+ 
+# DISCLAIMER
+
+❗️ This project must not be used for illegal purposes, and is strictly for educational purposes and for people to experiment with. The user takes full responsibility for their own actions.
