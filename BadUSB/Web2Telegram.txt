@@ -37,7 +37,7 @@ ENTER
 DELAY 500
 STRING cd \
 ENTER
-STRING Remove-Item \temp -Recurse -Force -Confirm:$false ;
+STRING Remove-Item \temp -Recurse -Force -Confirm:$false ; mkdir \temp ;
 ENTER
 STRING EXIT
 ENTER
